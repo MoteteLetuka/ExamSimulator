@@ -18,28 +18,6 @@ namespace API.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.5");
 
-            modelBuilder.Entity("API.Entities.AppUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<byte[]>("PAsswordHash")
-                        .HasColumnType("BLOB");
-
-                    b.Property<byte[]>("PaswwordHash")
-                        .HasColumnType("BLOB");
-
-                    b.Property<string>("Role")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
 #pragma warning restore 612, 618
         }
     }

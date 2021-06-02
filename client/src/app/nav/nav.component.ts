@@ -7,7 +7,7 @@ import { AccountService } from '../_services/account.service';
 @Component({
   selector: 'app-nav',
   template: `
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container">
     <a class="navbar-brand" routerLink="/" routerLinkActive = 'active' >Exam Simulator</a>
 
@@ -30,10 +30,8 @@ import { AccountService } from '../_services/account.service';
               </li>  -->
 
         </ul>
-
-
-        <div class="dropdown"*ngIf="loggedIn" dropdown>
-            <a class="dropdown-toggle text-light ml-2" dropdownToggle >Welcome User</a>
+        <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+            <a class="dropdown-toggle text-light ml-2" dropdownToggle >Welcome {{user.username | titlecase}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
               <a class="dropdown-item" >Edit Profile</a>
               <div class="dropdown-divider"></div>
@@ -44,6 +42,9 @@ import { AccountService } from '../_services/account.service';
 
       <form *ngIf="!loggedIn" #loginForm="ngForm" class = "form-inline mt-2 mt-md-0" (ngSubmit)="login()"
         autocomplete="off">
+ 
+          <span>
+
           <input 
           name = "username"
           [(ngModel)]="model.username"
@@ -51,12 +52,19 @@ import { AccountService } from '../_services/account.service';
           type="text" 
           placeholder="user name" >
 
+          </span>
+
+          <span>
+
           <input 
           name = "password"
           [(ngModel)]="model.password"
           class="form-control me-2" 
           type="password" 
           placeholder="password" >
+
+          </span>
+
           <button class="btn btn-outline-success" type="submit">Log in</button>
         </form>
     </div>
@@ -70,7 +78,7 @@ export class NavComponent implements OnInit {
   loggedIn = false;
  
 
-  constructor(private accountService: AccountService, private router: Router,
+  constructor(public accountService: AccountService, private router: Router,
     private toastr: ToastrService){}
 
   ngOnInit(): void {
