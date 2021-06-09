@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,15 +28,18 @@ namespace API.Controllers
             
         } 
         [HttpPost("register")]
-        public async Task<ActionResult<Subject>>Register(int id, string name)
+        public async Task<ActionResult<SubjectDTO>>Register(SubjectDTO subjectDTO)
         {
             var subj = new Subject{
-                Id = id,
-                Name = name
+                Id = subjectDTO.Id,
+                Name = subjectDTO.Name
             };
             this.Context.Subjects.Add(subj);
             await this.Context.SaveChangesAsync();
-            return subj;//BadRequest("Username alredy exists");
+            return new SubjectDTO{
+                Id = subj.Id,
+                Name = subj.Name
+            };
 
         }        
         private async Task<bool> SubjectExists(int id)

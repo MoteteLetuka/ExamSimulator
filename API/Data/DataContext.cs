@@ -13,5 +13,6 @@ namespace API.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionPaper> QuestionPapers { get; set; }     
         public DbSet<Subject> Subjects { get; set; }   
+        public DbSet<Paper> Papers { get; set; }   
     }
 }
