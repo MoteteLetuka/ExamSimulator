@@ -1,1 +1,48 @@
-<p>question-detail works!</p>
+<form #addq="ngForm" (ngSubmit)="addQuestion(addq)" >
+    <label for="subjectId" class="form-label">Sublect Id</label>
+    <select class="form-select" name="subjectid" [(ngModel)]="model.subjectid" >
+        <!-- <option selected>Open this select menu</option> -->
+        <option *ngFor="let subj of subjects" [value]="subj.id">
+            {{subj.name}}
+        </option>
+    </select>  
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Question</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" 
+        name="que" [(ngModel)]="model.que" ></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Correct Answer</label>
+        <input class="form-control" type="text" name="ans" [(ngModel)]="model.ans"  >
+    </div>    
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Random Answer 1</label>
+        <input class="form-control" type="text" name="rans1" [(ngModel)]="model.rans1"  >
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Random Answer 2</label>
+        <input class="form-control" type="text" name="rans2" [(ngModel)]="model.rans2"  >
+    </div>
+    
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Random Answer 3</label>
+        <input class="form-control" type="text" name="rans3" [(ngModel)]="model.rans3" >
+    </div>    
+
+
+    <button class="btn btn-success mr-2" type="submit">Add Question</button>
+    <button class="btn btn-success mr-2" type="reset" value="reset">Cancel</button>
+  </form>
+<hr>
+<div>
+    <a class="dropdown-item" routerLink="/question/0" routerLinkActive = 'active' >Add another question</a>
+</div>
+<!-- <button type="button" class="btn btn-primary" [routerLink]="['/question/0']" >Add question</button> -->
+<hr>
+<div>
+   <a class="dropdown-item" routerLink="/subject" routerLinkActive = 'active' >Done ? Return to Subject listing</a>
+</div>

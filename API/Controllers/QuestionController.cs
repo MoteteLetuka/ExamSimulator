@@ -32,9 +32,13 @@ namespace API.Controllers
         {
             //if (await QustionExists(questionDTO.Id)) return BadRequest("question alredy exists");            
             var q = new Question{
-                Id = questionDTO.Id,
+                //Id = questionDTO.Id,
+                subjId = questionDTO.subjId,
                 _text = questionDTO._text,
-                Answer = questionDTO.Answer
+                Answer = questionDTO.Answer,
+                RanAns1 = questionDTO.RanAns1,
+                RanAns2 = questionDTO.RanAns2,
+                RanAns3 = questionDTO.RanAns3
             };
             this.Context.Questions.Add(q);
             await this.Context.SaveChangesAsync();

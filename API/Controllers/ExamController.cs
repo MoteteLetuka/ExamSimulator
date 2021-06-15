@@ -36,7 +36,8 @@ namespace API.Controllers
                 Id = examDTO.Id, 
                 Student = examDTO.Student, 
                 Mark = examDTO.Mark, 
-                QuestionPaper = examDTO.QuestionPaper
+                QuestionPaper = examDTO.QuestionPaper,
+                evaluated = examDTO.evaluated
             };
             this.Context.Exams.Add(E);
             await this.Context.SaveChangesAsync();
@@ -44,7 +45,8 @@ namespace API.Controllers
                 Id = E.Id,
                 Student = E.Student,
                 Mark = E.Mark,
-                QuestionPaper = E.QuestionPaper
+                QuestionPaper = E.QuestionPaper,
+                evaluated = E.evaluated
             };
 
         }                   

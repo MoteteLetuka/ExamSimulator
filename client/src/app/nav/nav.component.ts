@@ -12,22 +12,37 @@ import { AccountService } from '../_services/account.service';
     <a class="navbar-brand" routerLink="/" routerLinkActive = 'active' >Exam Simulator</a>
 
         <ul class="navbar-nav mr-auto">
+              <div class="dropdown"   dropdown>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Examiner</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item" routerLink="/subject" routerLinkActive = 'active' >Subjects</a>
+                  <a class="dropdown-item" routerLink="/question" routerLinkActive = 'active' >Questions</a>
+                  <a class="dropdown-item" routerLink="/exam" routerLinkActive = 'active' >Exams</a>                                   
+                </div>
+              </div>
 
-              <li class="nav-item">
-                  <a class="nav-link"  routerLink="/exam" routerLinkActive = 'active'>Exams</a>
-              </li>
-              <!--put subject, question, answer under here for exerminer-->
-
-              <li class="nav-item">
-                  <a class="nav-link"  routerLink="/session" routerLinkActive = 'active'>Performance</a>
-              </li>
-<!--              <li class="nav-item">
-                  <a class="nav-link" *ngIf="loggedIn"  (click)="logout()" href="#" >Log out</a>
-              </li>  -->            
+              <div class="dropdown"   dropdown>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Student</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item" routerLink="/subject" routerLinkActive = 'active' >Take Exam</a>
+                  <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Reports</a>                                 
+                </div>
+              </div>
+              <div class="dropdown"   dropdown>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Educator</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item" routerLink="/exam" routerLinkActive = 'active' >Exam Papers</a>                                
+                </div>
+              </div>              
               
-<!--              <li class="nav-item">
-                  <a class="nav-link">Messages</a>
-              </li>  -->
+              <div class="dropdown"   dropdown>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Teacher</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Performance</a>
+                                  
+                </div>
+              </div>
+
 
         </ul>
         <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user" dropdown>
@@ -88,7 +103,7 @@ export class NavComponent implements OnInit {
   login(){
     this.accountService.login(this.model).subscribe(response => {
       this.loggedIn = true;
-      this.router.navigateByUrl('/landing');
+      //this.router.navigateByUrl('/landing');
     }, error => {
       console.log(error)
       this.toastr.error(error.error);

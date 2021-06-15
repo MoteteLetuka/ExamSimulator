@@ -11,6 +11,8 @@ namespace API.DTOs
         [Required]
         public int Mark { get; set; }
         [Required]
-        public int QuestionPaper { get; set; }         
+        public int QuestionPaper { get; set; }  
+        [Required]
+        public int evaluated { get; set; }        
     }
 }

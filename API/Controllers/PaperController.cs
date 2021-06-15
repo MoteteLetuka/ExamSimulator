@@ -32,7 +32,9 @@ namespace API.Controllers
                 Id = paperDTO.Id, 
                 Name = paperDTO.Name, 
                 Duration = paperDTO.Duration, 
-                PassScore = paperDTO.PassScore
+                PassScore = paperDTO.PassScore,
+                eval = paperDTO.eval,
+                SubjId = paperDTO.SubjId
             };
             this.Context.Papers.Add(p);
             await this.Context.SaveChangesAsync();
@@ -40,7 +42,9 @@ namespace API.Controllers
                 Id = p.Id,
                 Name = p.Name,
                 Duration = p.Duration,
-                PassScore = p.PassScore
+                PassScore = p.PassScore,
+                eval = p.eval,
+                SubjId = p.SubjId
             };
 
         }                   
