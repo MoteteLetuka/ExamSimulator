@@ -11,6 +11,10 @@ import { SessionDetailComponent } from './session/session-detail/session-detail.
 import { SessionListComponent } from './session/session-list/session-list.component';
 import { SubjectDetailComponent } from './subject/subject-detail/subject-detail.component';
 import { SubjectListComponent } from './subject/subject-list/subject-list.component';
+import { EducpaperListComponent } from './educpaper/educpaper-list/educpaper-list.component';
+import { EducpaperDetailComponent } from './educpaper/educpaper-detail/educpaper-detail.component';
+import { StupaperListComponent } from './stupaper/stupaper-list/stupaper-list.component';
+import { StupaperDetailComponent } from './stupaper/stupaper-detail/stupaper-detail.component';
 
 
 const routes: Routes = [
@@ -25,6 +29,10 @@ const routes: Routes = [
   {path:'answer/:id',component:AnswerDetailComponent},
   {path:'session',component:SessionListComponent},
   {path:'session/:id',component:SessionDetailComponent},
+  {path:'educpaper',component:EducpaperListComponent},
+  {path:'educpaper/:id',component:EducpaperDetailComponent},
+  {path:'stupaper',component:StupaperListComponent},
+  {path:'stupaper/:id',component:StupaperDetailComponent},
   {path:'**',component:HomeComponent, pathMatch:'full'}
 ];
 

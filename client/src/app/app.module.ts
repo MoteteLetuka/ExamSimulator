@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
@@ -22,6 +23,10 @@ import { SessionDetailComponent } from './session/session-detail/session-detail.
 import { LandingComponent } from './landing/landing.component';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedService} from './shared.service';
+import { EducpaperListComponent } from './educpaper/educpaper-list/educpaper-list.component';
+import { EducpaperDetailComponent } from './educpaper/educpaper-detail/educpaper-detail.component';
+import { StupaperListComponent } from './stupaper/stupaper-list/stupaper-list.component';
+import { StupaperDetailComponent } from './stupaper/stupaper-detail/stupaper-detail.component';
   
 
 @NgModule({
@@ -42,12 +47,17 @@ import { SharedService} from './shared.service';
     AnswerDetailComponent,
     SessionDetailComponent,
     SessionListComponent,
-    LandingComponent 
+    LandingComponent,
+    EducpaperListComponent,
+    EducpaperDetailComponent,
+    StupaperListComponent,
+    StupaperDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,

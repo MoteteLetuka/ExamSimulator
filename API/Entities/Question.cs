@@ -1,9 +1,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
+using System.Collections.Generic;
 
 namespace API.Entities
 {
     public class Question
     {
+        //public virtual ICollection<Subject> Subjects { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int subjId {get; set;}

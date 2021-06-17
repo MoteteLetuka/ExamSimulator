@@ -1,0 +1,43 @@
+<!--List of questions-->
+<hr>
+<button class="btn btn-success mr-2" (click)="getQ()">Start</button>
+<hr>
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Question</th>
+        <th scope="col">A</th>
+        <th scope="col">B</th>
+        <th scope="col">C</th>  
+        <th scope="col">D</th>            
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ques of questions | paginate: {id:'listing_pagination',
+    itemsPerPage: 1,
+    currentPage: pageNumber,
+    totalItems: totalRecord}">
+        <th scope="row">{{ques._text}}</th>
+        <td>{{ques.answer}}
+            <input type="checkbox" id="1"
+            [ngModel]="filter" (ngModelChange)="onFilterChange($event)"> 
+        </td>
+        <td>{{ques.ranAns1}}</td>
+        <td>{{ques.ranAns2}}</td>  
+        <td>{{ques.ranAns3}}</td>             
+      </tr>
+    </tbody>
+    </table>
+    <div>
+        <pagination-controls id ="listing_pagination" (pageChange) = "pageNumber = $event">
+            
+        </pagination-controls>
+    </div>
+
+<hr>
+<button class="btn btn-success mr-2" (click)="updatePaper()">compliant</button>
+<hr>
+<div>
+  <a class="dropdown-item" routerLink="/educpaper" routerLinkActive = 'active' >Done ? Return to Paper listing</a>
+</div>
+

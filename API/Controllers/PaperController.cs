@@ -20,11 +20,17 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Paper>>>GetPapers(){
             return await this.Context.Papers.ToListAsync();            
-        }  
+        }    
+
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Paper>>GetPaper(int id){
             return await this.Context.Papers.FindAsync(id);           
         }  
+        //gets papers by subjects
+        [HttpGet("getpbys/{id:int}")]
+        public async Task<ActionResult<IEnumerable<Paper>>>getpbys(int id){
+            return await this.Context.Papers.Where(o => o.SubjId == id).ToListAsync();            
+        } 
         [HttpPost("register")]
         public async Task<ActionResult<PaperDTO>>Register(PaperDTO paperDTO)
         {
@@ -46,9 +52,31 @@ namespace API.Controllers
                 eval = p.eval,
                 SubjId = p.SubjId
             };
+        }  
+        [HttpPut("UpdatePaper")]
+        public async Task<ActionResult<PaperDTO>>UpdatePaper()
+        {
 
-        }                   
-        private async Task<bool> PaperExists(int id)
+            if (!ModelState.IsValid)
+                return BadRequest("Not a valid model");
+            else{
+
+                var paper = this.Context.Papers.FirstOrDefault();
+                if(paper != null){
+                    paper.eval = 1;
+                    await this.Context.SaveChangesAsync();
+                    return Content("ok done");
+                    
+                }
+                else
+                {
+                    return BadRequest("Update failed");
+                }
+                
+                }
+
+        }                        
+        private async Task<bool>PaperExists(int id)
         {
             return await  this.Context.Papers.AnyAsync(x => x.Id == id );
         }              

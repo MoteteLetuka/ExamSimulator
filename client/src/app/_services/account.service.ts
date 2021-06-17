@@ -13,6 +13,7 @@ export class AccountService {
   baseUrl = "https://localhost:5001/api/";
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
+  user!: User;
 
   constructor(private http: HttpClient) { }
 
@@ -40,6 +41,9 @@ export class AccountService {
       )
     )
   }
+  public getCurrentUser(): User {
+    return this.user; // Here you get the current user.
+  } 
 
   setCurrentUser(user: User){
     this.currentUserSource.next(user);

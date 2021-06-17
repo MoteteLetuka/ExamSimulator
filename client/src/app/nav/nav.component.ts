@@ -24,14 +24,14 @@ import { AccountService } from '../_services/account.service';
               <div class="dropdown"   dropdown>
                 <a class="dropdown-toggle text-light ml-2" dropdownToggle > Student</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
-                  <a class="dropdown-item" routerLink="/subject" routerLinkActive = 'active' >Take Exam</a>
+                  <a class="dropdown-item" routerLink="/stupaper" routerLinkActive = 'active' >Take Exam</a>
                   <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Reports</a>                                 
                 </div>
               </div>
               <div class="dropdown"   dropdown>
                 <a class="dropdown-toggle text-light ml-2" dropdownToggle > Educator</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
-                  <a class="dropdown-item" routerLink="/exam" routerLinkActive = 'active' >Exam Papers</a>                                
+                  <a class="dropdown-item" routerLink="/educpaper" routerLinkActive = 'active' >Exam Papers</a>                                
                 </div>
               </div>              
               

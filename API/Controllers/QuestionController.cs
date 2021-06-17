@@ -49,11 +49,14 @@ namespace API.Controllers
             };
 
         }                            
-        private async Task<bool> QustionExists(int id)
+        private async Task<bool>QuestionExists(int id)
         {
             return await  this.Context.Questions.AnyAsync(x => x.Id == id );
-        }  
-
-                    
+        } 
+        //list questions by subjects
+        [HttpGet("getqbys/{id:int}")]
+        public async Task<ActionResult<IEnumerable<Question>>>getqbys(int id){
+            return await this.Context.Questions.Where(o => o.subjId == id).ToListAsync();            
+        }                    
     }
 }

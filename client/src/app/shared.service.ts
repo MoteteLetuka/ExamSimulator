@@ -32,9 +32,17 @@ export class SharedService {
   getPapers():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/paper');
   }
+
+  getPaper(val:number):Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/paper');
+  }
   
   addPaper(val:any){
     return this.http.post(this.APIUrl+'/paper/register', val);
+  }
+
+  updatePaper():Observable<any>{
+    return this.http.put<any>(this.APIUrl+'/paper/UpdatePaper',null);
   }
 
   getExams():Observable<any[]>{
@@ -44,6 +52,5 @@ export class SharedService {
   addExam(val:any){
     return this.http.post(this.APIUrl+'/exam/register', val);
   }
-
  
 }
