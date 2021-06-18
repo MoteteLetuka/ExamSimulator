@@ -19,12 +19,17 @@
     totalItems: totalRecord}">
         <th scope="row">{{ques._text}}</th>
         <td>{{ques.answer}}
-            <input type="checkbox" id="1"
-            [ngModel]="filter" (ngModelChange)="onFilterChange($event)"> 
+          <button type="button" (click)=" updateScore()" class="btn btn-outline-dark btn-sm"></button>
         </td>
-        <td>{{ques.ranAns1}}</td>
-        <td>{{ques.ranAns2}}</td>  
-        <td>{{ques.ranAns3}}</td>             
+        <td>{{ques.ranAns1}}
+          <button type="button" (click)="r1()"  class="btn btn-outline-dark btn-sm"></button>
+        </td>
+        <td>{{ques.ranAns2}}
+          <button type="button" (click)="r2()" class="btn btn-outline-dark btn-sm"></button>
+        </td>  
+        <td>{{ques.ranAns3}}
+          <button type="button" (click)="r3()" class="btn btn-outline-dark btn-sm"></button>
+        </td>             
       </tr>
     </tbody>
     </table>
@@ -35,9 +40,9 @@
     </div>
 
 <hr>
-<button class="btn btn-success mr-2" (click)="updatePaper()">compliant</button>
+<button class="btn btn-success mr-2" (click)="recordPerformance()">End exam</button>
 <hr>
 <div>
-  <a class="dropdown-item" routerLink="/educpaper" routerLinkActive = 'active' >Done ? Return to Paper listing</a>
+  <a class="dropdown-item" routerLink="/stupaper" routerLinkActive = 'active' >Done ? Return to Paper listing</a>
 </div>
 

@@ -29,6 +29,7 @@ export class SharedService {
     return this.http.post(this.APIUrl+'/question/register', val);
   }
 
+
   getPapers():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/paper');
   }

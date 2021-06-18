@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Router} from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -33,7 +32,7 @@ export class StupaperDetailComponent implements OnInit {
       this.id = +params['id'];// + converts string id to number
     })
   }
-// need to pass by id from param, so need a filter of id
+  // need to pass by id from param, so need a filter of id
   getQ(){
     this.service.getQuestions().subscribe (ques=>{
       this.questions = ques;
@@ -55,18 +54,45 @@ export class StupaperDetailComponent implements OnInit {
     });
 
   }
-  updatePaper(){  
-  this.service.updatePaper().subscribe( response=>{
-    alert("Exam Paper evaluated successfully");
-     console.log(response);
-  },error=>{
-     console.log(error);
-   } )   
+  recordPerformance(){  
+      //insert data into session
+      //alert("Tolal:"+ this.totalRecord+ "Your score" + this.score);
+      //Xmark: number = (this.score/this.totalRecord) this.score/this.totalRecord;
+        var val = {
+          student: 9,
+          mark: this.score,
+          questionPaper: this.id,
+          evaluated: this.totalRecord
+      }
 
- }
+      this.service.addExam(val).subscribe( response=>{
+        console.log(JSON.stringify(response));
+        alert("You have completed the paper.");
+      },error=>{
+        console.log(error);
+      } ) 
+    //  addQuestion.reset(); //form 
+  
+  }
+  updateScore(){  
+    //check if correct answer is selected
+  this.score ++;
+    //alert(this.score);
+    alert("Answer saved");
+
+  }
+  r1(){
+    alert("Answer saved");
+  }
+  r2(){
+    alert("Answer saved");
+  }
+  r3(){
+    alert("Answer saved");
+  }
 
   ngOnDestroy(){
-    this.sub.unsubscribe();
+      this.sub.unsubscribe();
   }
 
 }

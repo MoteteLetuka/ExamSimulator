@@ -35,8 +35,8 @@ export class QuestionDetailComponent implements OnInit {
     //Id: this.model.
     Answer: this.model.ans, 
     RanAns1: this.model.rans1, 
-    RanAns2: this.model.rans1, 
-    RanAns3: this.model.rans1, 
+    RanAns2: this.model.rans2, 
+    RanAns3: this.model.rans3, 
     _text: this.model.que, 
     subjId: this.model.subjectid
   } 
