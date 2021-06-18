@@ -1,1 +1,22 @@
-<p>session-list works!</p>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Exam Code</th>
+        <th scope="col">Student</th>
+        <th scope="col">Possible Score</th>
+        <th scope="col">Score Obtained</th>      
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let paper of newData">
+        <th scope="row">{{paper.questionPaper}}</th>
+        <td>{{paper.userName}}</td>
+        <td>{{paper.evaluated}}</td>        
+        <td>{{paper.mark}}</td>
+      </tr>
+    </tbody>
+    </table>
+    <div>
+        <a class="dropdown-item" [routerLink]="['../exam']" routerLinkActive = 'active'> Navigate to Examination Paper listing</a>
+    </div>
