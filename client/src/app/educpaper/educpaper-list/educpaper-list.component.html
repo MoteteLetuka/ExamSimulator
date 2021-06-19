@@ -1,0 +1,27 @@
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Available Exam Papers</p>
+  </blockquote>
+</figure>
+<table class="table table-dark table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Paper Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Compliant</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let paper of PaperList">
+        <th scope="row">{{paper.id}}</th>
+        <td>{{paper.name}}</td>
+        <td>{{paper.eval==1 ? 'Yes' : 'No'}}</td>
+        <td>
+            <button type="button" class="btn btn-outline-info"  [routerLink]="['../educpaper/',paper.id]"   >Evaluate</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+

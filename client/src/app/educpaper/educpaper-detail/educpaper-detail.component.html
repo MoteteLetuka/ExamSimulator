@@ -1,0 +1,43 @@
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Evaluating Exam Paper</p>
+  </blockquote>
+</figure>
+<button class="btn btn-success mr-2" (click)="getQ()">Fetch questions</button>
+
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Question</th>
+        <th scope="col">Answer</th>
+        <th scope="col"> Option 1</th>
+        <th scope="col"> Option 2</th>  
+        <th scope="col"> Option 3</th>            
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ques of questions | paginate: {id:'listing_pagination',
+    itemsPerPage: 1,
+    currentPage: pageNumber,
+    totalItems: totalRecord}">
+        <th scope="row">{{ques._text}}</th>
+        <td>{{ques.answer}}</td>
+        <td>{{ques.ranAns1}}</td>
+        <td>{{ques.ranAns2}}</td>  
+        <td>{{ques.ranAns3}}</td>             
+      </tr>
+    </tbody>
+    </table>
+    <div>
+        <pagination-controls id ="listing_pagination" (pageChange) = "pageNumber = $event">    
+        </pagination-controls>
+    </div>
+
+<hr>
+<button class="btn btn-success mr-2" (click)="updatePaper()">Compliant</button>
+<button class="btn btn-success mr-2">Not Compliant</button>
+<hr>
+<div>
+  <a class="dropdown-item" routerLink="/educpaper" routerLinkActive = 'active' >Done ? Return to Paper listing</a>
+</div>
+

@@ -1,1 +1,41 @@
-<p>exam-detail works!</p>
+<figure class="text-center">
+    <blockquote class="blockquote">
+      <p>Adding a Question paper</p>
+    </blockquote>
+</figure>
+
+<form #addq="ngForm" (ngSubmit)="addPaper(addq)">
+    <label for="subjectId" class="form-label">Sublect Id</label>
+    <select class="form-select" name="subjectid" [(ngModel)]="model.subjectid" >
+        <!-- <option selected>Open this select menu</option> -->
+        <option *ngFor="let subj of subjects" [value]="subj.id">
+            {{subj.name}}
+        </option>
+    </select>  
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Name</label>
+        <input class="form-control" type="text" name="name" [(ngModel)]="model.name"  >
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Duration</label>
+        <input class="form-control" type="number" name="duration" [(ngModel)]="model.duration"  >
+    </div>    
+
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Pass Score</label>
+        <input class="form-control" type="number" name="passscore" [(ngModel)]="model.passscore"  >
+    </div>
+    <!-- eval is update by examiner-->
+   
+
+    <button class="btn btn-success mr-2" type="submit">Add Paper</button>
+    <button class="btn btn-success mr-2" type="reset" value="reset">Cancel</button>
+  </form>
+<hr>
+<!-- <button type="button" class="btn btn-primary" [routerLink]="['/question/0']" >Add question</button> -->
+<hr>
+<div>
+   <a class="dropdown-item" routerLink="/exam" routerLinkActive = 'active' >Done ? Return to Paper listing</a>
+</div>

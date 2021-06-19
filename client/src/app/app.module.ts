@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
@@ -21,6 +22,13 @@ import { SessionListComponent } from './session/session-list/session-list.compon
 import { SessionDetailComponent } from './session/session-detail/session-detail.component';
 import { LandingComponent } from './landing/landing.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedService} from './shared.service';
+import { EducpaperListComponent } from './educpaper/educpaper-list/educpaper-list.component';
+import { EducpaperDetailComponent } from './educpaper/educpaper-detail/educpaper-detail.component';
+import { StupaperListComponent } from './stupaper/stupaper-list/stupaper-list.component';
+import { StupaperDetailComponent } from './stupaper/stupaper-detail/stupaper-detail.component';
+import { CountdownModule } from 'ngx-countdown';
+  
 
 @NgModule({
   declarations: [
@@ -40,20 +48,27 @@ import { ToastrModule } from 'ngx-toastr';
     AnswerDetailComponent,
     SessionDetailComponent,
     SessionListComponent,
-    LandingComponent 
+    LandingComponent,
+    EducpaperListComponent,
+    EducpaperDetailComponent,
+    StupaperListComponent,
+    StupaperDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
+    CountdownModule ,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     })
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

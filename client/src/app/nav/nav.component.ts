@@ -7,43 +7,60 @@ import { AccountService } from '../_services/account.service';
 @Component({
   selector: 'app-nav',
   template: `
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container">
     <a class="navbar-brand" routerLink="/" routerLinkActive = 'active' >Exam Simulator</a>
 
         <ul class="navbar-nav mr-auto">
+              <div class="dropdown"   *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Examiner</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item" routerLink="/subject" routerLinkActive = 'active' >Subjects</a>
+                  <a class="dropdown-item" routerLink="/question" routerLinkActive = 'active' >Questions</a>
+                  <a class="dropdown-item" routerLink="/exam" routerLinkActive = 'active' >Exams</a>                                   
+                </div>
+              </div>
 
-              <li class="nav-item">
-                  <a class="nav-link"  routerLink="/exam" routerLinkActive = 'active'>Exams</a>
-              </li>
-              <!--put subject, question, answer under here for exerminer-->
-
-              <li class="nav-item">
-                  <a class="nav-link"  routerLink="/session" routerLinkActive = 'active'>Performance</a>
-              </li>
-<!--              <li class="nav-item">
-                  <a class="nav-link" *ngIf="loggedIn"  (click)="logout()" href="#" >Log out</a>
-              </li>  -->            
+              <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user"  dropdown>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Student</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item" routerLink="/stupaper" routerLinkActive = 'active' >Take Exam</a>
+                  <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Reports</a>                                 
+                </div>
+              </div>
+              <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user"  dropdown>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Educator</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item" routerLink="/educpaper" routerLinkActive = 'active' >Exam Papers</a>                                
+                </div>
+              </div>              
               
-<!--              <li class="nav-item">
-                  <a class="nav-link">Messages</a>
-              </li>  -->
+              <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Teacher</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                  <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Performance</a>
+                                  
+                </div>
+              </div>
+
 
         </ul>
-
-
-        <div class="dropdown"*ngIf="loggedIn" dropdown>
-            <a class="dropdown-toggle text-light ml-2" dropdownToggle >Welcome User</a>
+        <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+            <a class="dropdown-toggle text-light ml-2" dropdownToggle >Welcome {{user.username | titlecase}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
               <a class="dropdown-item" >Edit Profile</a>
+              <div class="dropdown-divider"></div>          
+              <a class="dropdown-item" target="_blank" href="../assets/usermanual.pdf">Get Manual</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" (click)="logout()" >Logout</a>
             </div>
         </div>       
 
-
       <form *ngIf="!loggedIn" #loginForm="ngForm" class = "form-inline mt-2 mt-md-0" (ngSubmit)="login()"
         autocomplete="off">
+ 
+          <span>
+
           <input 
           name = "username"
           [(ngModel)]="model.username"
@@ -51,12 +68,19 @@ import { AccountService } from '../_services/account.service';
           type="text" 
           placeholder="user name" >
 
+          </span>
+
+          <span>
+
           <input 
           name = "password"
           [(ngModel)]="model.password"
           class="form-control me-2" 
           type="password" 
           placeholder="password" >
+
+          </span>
+
           <button class="btn btn-outline-success" type="submit">Log in</button>
         </form>
     </div>
@@ -70,7 +94,7 @@ export class NavComponent implements OnInit {
   loggedIn = false;
  
 
-  constructor(private accountService: AccountService, private router: Router,
+  constructor(public accountService: AccountService, private router: Router,
     private toastr: ToastrService){}
 
   ngOnInit(): void {
@@ -80,7 +104,7 @@ export class NavComponent implements OnInit {
   login(){
     this.accountService.login(this.model).subscribe(response => {
       this.loggedIn = true;
-      this.router.navigateByUrl('/landing');
+      //this.router.navigateByUrl('/landing');
     }, error => {
       console.log(error)
       this.toastr.error(error.error);

@@ -1,0 +1,61 @@
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Best wishes in your examinations</p>
+  </blockquote>
+</figure>
+    <div class="mb-3">
+      <div class="btn-group">
+        <button class="btn btn-success mr-2" disabled>
+          <countdown #cd2 [config]="{ leftTime: 30, demand: true }"></countdown>
+        </button>
+        <button class="btn btn-success mr-2" (click)="getQ()"  (click)="cd2.begin()" >Start</button>
+
+      </div>
+
+    </div>
+
+<hr>
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Question</th>
+        <th scope="col">A</th>
+        <th scope="col">B</th>
+        <th scope="col">C</th>  
+        <th scope="col">D</th>            
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ques of questions | paginate: {id:'listing_pagination',
+    itemsPerPage: 1,
+    currentPage: pageNumber,
+    totalItems: totalRecord}">
+        <th scope="row">{{ques._text}}</th>
+        <td>{{ques.answer}}
+          <button type="button" (click)=" updateScore()" class="btn btn-outline-dark btn-sm"></button>
+        </td>
+        <td>{{ques.ranAns1}}
+          <button type="button" (click)="r1()"  class="btn btn-outline-dark btn-sm"></button>
+        </td>
+        <td>{{ques.ranAns2}}
+          <button type="button" (click)="r2()" class="btn btn-outline-dark btn-sm"></button>
+        </td>  
+        <td>{{ques.ranAns3}}
+          <button type="button" (click)="r3()" class="btn btn-outline-dark btn-sm"></button>
+        </td>             
+      </tr>
+    </tbody>
+    </table>
+    <div>
+        <pagination-controls id ="listing_pagination" (pageChange) = "pageNumber = $event">
+            
+        </pagination-controls>
+    </div>
+
+<hr>
+<button class="btn btn-success mr-2" (click)="recordPerformance()">End exam</button>
+<hr>
+<div>
+  <a class="dropdown-item" routerLink="/stupaper" routerLinkActive = 'active' >Done ? Return to Paper listing</a>
+</div>
+

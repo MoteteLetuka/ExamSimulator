@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-exam-list',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:SharedService) { }
+  PaperList: any[] = [];
 
   ngOnInit(): void {
+    this.refreshPaperList();
+  }
+
+  refreshPaperList(){
+    this.service.getPapers().subscribe(data=>{
+      this.PaperList = data;
+    });
   }
 
 }
+
+

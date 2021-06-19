@@ -1,0 +1,43 @@
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Available Exam Papers</p>
+  </blockquote>
+</figure>
+<table class="table table-dark table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Pass Mark</th>
+      <th scope="col">Duration</th>     
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let paper of PaperList">
+      <th scope="row">{{paper.name}}</th>
+      <td>{{paper.name}}</td>
+      <td>{{paper.passScore}}</td>
+      <td>{{paper.duration}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm"  [routerLink]="['../stupaper/',paper.id]"   >Take Paper</button>
+  
+      </td>
+    </tr>
+  </tbody>
+  </table>
+ 
+
+
+<!--     {{ this.totalSubjects }}
+    {{ this.totalpapers }}
+    {{this.totalQ}}
+    {{this.totalMerged}} -->
+
+
+
+
+
+
+
+     

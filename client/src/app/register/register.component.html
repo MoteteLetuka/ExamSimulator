@@ -6,6 +6,17 @@
             <input type="text" class="form-control"  [(ngModel)]="model.username" name="username"
              placeholder="username"> 
         </div>
+
+        <div class="form-group">
+            <select class="form-select" aria-label="Default select example">
+                <option selected  [(ngModel)]="model.role">Select Role</option>
+                <option value="Exerminer">Exerminer</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Educator">Educator</option>
+                <option value="Student">Student</option>             
+            </select>
+        </div>      
+
         <div class="form-group">
             <input type="password" class="form-control" name="password" [(ngModel)]="model.password"
              placeholder="password"> 

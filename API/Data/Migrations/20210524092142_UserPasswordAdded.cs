@@ -20,15 +20,5 @@ namespace API.Data.Migrations
                 nullable: true);
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "PAsswordHash",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "PaswwordHash",
-                table: "Users");
-        }
     }
 }
