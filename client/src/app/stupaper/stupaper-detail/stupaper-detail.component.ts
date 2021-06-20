@@ -68,7 +68,7 @@ export class StupaperDetailComponent implements OnInit {
 
       this.service.addExam(val).subscribe( response=>{
         console.log(JSON.stringify(response));
-        alert("You have completed the paper.");
+        alert("You have completed the paper. Your Score: "+this.score+" of possible: "+this.totalRecord);
       },error=>{
         console.log(error);
       } ) 

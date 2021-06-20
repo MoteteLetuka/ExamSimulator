@@ -6,7 +6,7 @@
     <div class="mb-3">
       <div class="btn-group">
         <button class="btn btn-success mr-2" disabled>
-          <countdown #cd2 [config]="{ leftTime: 30, demand: true }"></countdown>
+          <countdown #cd2 [config]="{ leftTime: 7200, demand: true }"></countdown>
         </button>
         <button class="btn btn-success mr-2" (click)="getQ()"  (click)="cd2.begin()" >Start</button>
 
