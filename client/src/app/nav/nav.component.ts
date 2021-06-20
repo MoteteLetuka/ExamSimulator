@@ -12,7 +12,7 @@ import { AccountService } from '../_services/account.service';
     <a class="navbar-brand" routerLink="/" routerLinkActive = 'active' >Exam Simulator</a>
 
         <ul class="navbar-nav mr-auto">
-              <div class="dropdown"   dropdown>
+              <div class="dropdown"   *ngIf="(accountService.currentUser$ | async) as user" dropdown>
                 <a class="dropdown-toggle text-light ml-2" dropdownToggle > Examiner</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                   <a class="dropdown-item" routerLink="/subject" routerLinkActive = 'active' >Subjects</a>
@@ -21,21 +21,21 @@ import { AccountService } from '../_services/account.service';
                 </div>
               </div>
 
-              <div class="dropdown"   dropdown>
+              <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user"  dropdown>
                 <a class="dropdown-toggle text-light ml-2" dropdownToggle > Student</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                   <a class="dropdown-item" routerLink="/stupaper" routerLinkActive = 'active' >Take Exam</a>
                   <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Reports</a>                                 
                 </div>
               </div>
-              <div class="dropdown"   dropdown>
+              <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user"  dropdown>
                 <a class="dropdown-toggle text-light ml-2" dropdownToggle > Educator</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                   <a class="dropdown-item" routerLink="/educpaper" routerLinkActive = 'active' >Exam Papers</a>                                
                 </div>
               </div>              
               
-              <div class="dropdown"   dropdown>
+              <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user" dropdown>
                 <a class="dropdown-toggle text-light ml-2" dropdownToggle > Teacher</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                   <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Performance</a>
@@ -49,11 +49,12 @@ import { AccountService } from '../_services/account.service';
             <a class="dropdown-toggle text-light ml-2" dropdownToggle >Welcome {{user.username | titlecase}}</a>
             <div class="dropdown-menu mt-3" *dropdownMenu>
               <a class="dropdown-item" >Edit Profile</a>
+              <div class="dropdown-divider"></div>          
+              <a class="dropdown-item" target="_blank" href="../assets/usermanual.pdf">Get Manual</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" (click)="logout()" >Logout</a>
             </div>
         </div>       
-
 
       <form *ngIf="!loggedIn" #loginForm="ngForm" class = "form-inline mt-2 mt-md-0" (ngSubmit)="login()"
         autocomplete="off">

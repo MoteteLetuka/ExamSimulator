@@ -1,20 +1,41 @@
-<div class="container mt-5">
-    <div *ngIf="!registerMode" style='text-align: center;'>
-        <h1>Find your match</h1>
-        <p class="lead">Come on in to view your matches... all you need to do is sign up!</p>
-        <div class="text-center">
-            <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Register</button>
-            <button class="btn btn-info btn-lg">Learn more</button>
-        </div>
-    </div>
 
-    <div *ngIf="registerMode" class="container">
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <app-register  (cancelRegister)="cancelRegisterMode($event)"> </app-register>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <p class="lead">
+                    <figure>
+                        <blockquote class="blockquote">
+                          <p>
+                            “Education is the great engine of personal development. It is through education that the daughter of a peasant can become a doctor, that the son of a mine worker can become the head of the mine, that a child of farm workers can become the president of a great nation. It is what we make out of what we have, not what we are given, that separates one person from another.”
+                        </p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                          <cite title="Source Title">Nelson Mandela</cite>
+                        </figcaption>
+                    </figure>
+               </p>   
+              </div>
+
+
+              <div class="col-xl">
+                
+                    <div *ngIf="!registerMode" style='text-align: center;'>
+                        <h2>Practise on actual past exam papers</h2>
+                        <p class="lead">Start preparing for...</p>
+                        <div class="text-center">
+                            <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Register</button>
+                            <button class="btn btn-info btn-lg">Learn more</button>
+                        </div>
+                    </div>
+                
+                    <div *ngIf="registerMode" class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-4">
+                                <app-register  (cancelRegister)="cancelRegisterMode($event)"> </app-register>
+                            </div>
+                        </div>
+                    </div>
+              
+              </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<!--<app-subject-list></app-subject-list>-->
+          </div>

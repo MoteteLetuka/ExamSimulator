@@ -1,4 +1,9 @@
-<form #addsubj="ngForm" (ngSubmit)="addSubject(addsubj)" >
+
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Defining a Subject</p>
+  </blockquote>
+</figure><form #addsubj="ngForm" (ngSubmit)="addSubject(addsubj)" >
     <div class="mb-3">
       <label for="subjectId" class="form-label">Sublect Id</label>
       <input type="number" class="form-control"  name="subjectid"  [(ngModel)]="model.subjectid">

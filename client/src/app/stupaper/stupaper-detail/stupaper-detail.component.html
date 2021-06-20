@@ -1,6 +1,19 @@
-<!--List of questions-->
-<hr>
-<button class="btn btn-success mr-2" (click)="getQ()">Start</button>
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Best wishes in your examinations</p>
+  </blockquote>
+</figure>
+    <div class="mb-3">
+      <div class="btn-group">
+        <button class="btn btn-success mr-2" disabled>
+          <countdown #cd2 [config]="{ leftTime: 30, demand: true }"></countdown>
+        </button>
+        <button class="btn btn-success mr-2" (click)="getQ()"  (click)="cd2.begin()" >Start</button>
+
+      </div>
+
+    </div>
+
 <hr>
 <table class="table table-sm">
     <thead>

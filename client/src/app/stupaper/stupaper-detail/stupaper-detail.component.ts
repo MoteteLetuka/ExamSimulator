@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
 import { NgForm } from '@angular/forms';
 import { SharedService } from 'src/app/shared.service';
 import { ActivatedRoute } from '@angular/router';
@@ -46,14 +47,14 @@ export class StupaperDetailComponent implements OnInit {
     this.filter = !this.filter;
   }
 
-  getPaper(i:number){
+/*   getPaper(i:number){
     this.service.getPaper(i).subscribe (ques=>{
       this.questions = ques;
       console.log(ques);
       this.totalRecord = ques.length;
     });
 
-  }
+  } */
   recordPerformance(){  
       //insert data into session
       //alert("Tolal:"+ this.totalRecord+ "Your score" + this.score);

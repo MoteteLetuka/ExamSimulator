@@ -27,6 +27,7 @@ import { EducpaperListComponent } from './educpaper/educpaper-list/educpaper-lis
 import { EducpaperDetailComponent } from './educpaper/educpaper-detail/educpaper-detail.component';
 import { StupaperListComponent } from './stupaper/stupaper-list/stupaper-list.component';
 import { StupaperDetailComponent } from './stupaper/stupaper-detail/stupaper-detail.component';
+import { CountdownModule } from 'ngx-countdown';
   
 
 @NgModule({
@@ -61,6 +62,7 @@ import { StupaperDetailComponent } from './stupaper/stupaper-detail/stupaper-det
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    CountdownModule ,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
