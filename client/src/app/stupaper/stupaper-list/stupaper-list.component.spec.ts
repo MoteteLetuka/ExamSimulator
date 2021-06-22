@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedService } from 'src/app/shared.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { StupaperListComponent } from './stupaper-list.component';
 
 describe('StupaperListComponent', () => {
@@ -8,7 +10,9 @@ describe('StupaperListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StupaperListComponent ]
+      declarations: [ StupaperListComponent ],
+      imports:[RouterTestingModule, HttpClientTestingModule],
+      providers:[SharedService]
     })
     .compileComponents();
   });

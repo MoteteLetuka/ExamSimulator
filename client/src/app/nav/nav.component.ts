@@ -13,7 +13,7 @@ import { AccountService } from '../_services/account.service';
 
         <ul class="navbar-nav mr-auto">
               <div class="dropdown"   *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Examiner</a>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle *ngIf="user.username == 'edwin'"> Examiner</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                   <a class="dropdown-item" routerLink="/subject" routerLinkActive = 'active' >Subjects</a>
                   <a class="dropdown-item" routerLink="/question" routerLinkActive = 'active' >Questions</a>
@@ -22,21 +22,21 @@ import { AccountService } from '../_services/account.service';
               </div>
 
               <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user"  dropdown>
-                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Student</a>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle  *ngIf="user.username == 'dave'"> Student</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                   <a class="dropdown-item" routerLink="/stupaper" routerLinkActive = 'active' >Take Exam</a>
                   <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Reports</a>                                 
                 </div>
               </div>
               <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user"  dropdown>
-                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Educator</a>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle *ngIf="user.username == 'henry'" > Educator</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                   <a class="dropdown-item" routerLink="/educpaper" routerLinkActive = 'active' >Exam Papers</a>                                
                 </div>
               </div>              
               
               <div class="dropdown"  *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-                <a class="dropdown-toggle text-light ml-2" dropdownToggle > Teacher</a>
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle dropdownToggle *ngIf="user.username == 'edwin'" > Teacher</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                   <a class="dropdown-item" routerLink="/session" routerLinkActive = 'active' >Performance</a>
                                   
@@ -50,7 +50,7 @@ import { AccountService } from '../_services/account.service';
             <div class="dropdown-menu mt-3" *dropdownMenu>
               <a class="dropdown-item" >Edit Profile</a>
               <div class="dropdown-divider"></div>          
-              <a class="dropdown-item" target="_blank" href="../assets/usermanual.pdf">Get Manual</a>
+              <a class="dropdown-item" target="_blank" href="../assets/Exam simulator-usermanual.pdf">Get Manual</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" (click)="logout()" >Logout</a>
             </div>

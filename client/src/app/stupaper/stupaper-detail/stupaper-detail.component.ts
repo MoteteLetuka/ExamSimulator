@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
+import { CountdownComponent, CountdownConfig, CountdownEvent,CountdownModule } from 'ngx-countdown';
 import { NgForm } from '@angular/forms';
 import { SharedService } from 'src/app/shared.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @Component({
   selector: 'app-stupaper-detail',
